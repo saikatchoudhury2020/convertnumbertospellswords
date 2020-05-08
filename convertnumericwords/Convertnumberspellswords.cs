@@ -196,6 +196,29 @@ namespace convertnumbertospellswords
             catch { }
             return word.Trim();
         }
+        public static String ConvertToWords(String numb)
+        {
+            String val = "", wholeNo = numb, points = "", andStr = "", pointStr = "";
+            String endStr = "Only";
+            try
+            {
+                int decimalPlace = numb.IndexOf(".");
+                if (decimalPlace > 0)
+                {
+                    wholeNo = numb.Substring(0, decimalPlace);
+                    points = numb.Substring(decimalPlace + 1);
+                    if (Convert.ToInt32(points) > 0)
+                    {
+                        andStr = "and";// just to separate whole numbers from points/cents    
+                        endStr = "Paisa " + endStr;//Cents    
+                        pointStr = ConvertDecimals(points);
+                    }
+                }
+                val = String.Format("{0} {1}{2} {3}", ConvertWholeNumber(wholeNo).Trim(), andStr, pointStr, endStr);
+            }
+            catch { }
+            return val;
+        }
 
     }
 }
