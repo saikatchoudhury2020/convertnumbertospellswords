@@ -31,7 +31,7 @@ namespace convertnumbertospellswords.Controllers
                 }
                 else
                 {
-                    ViewBag.Name = "";
+                    ViewBag.Name = isNegative + Convertnumberspellswords.ConvertToWords(number); 
                 }
             }
             catch (Exception ex)
