@@ -1,0 +1,13 @@
+﻿@{
+    ViewBag.Title = "Home Page";
+}
+
+    <div style="padding-top: 50px;" >
+        @using (Html.BeginForm("Index", "Home", FormMethod.Post))
+        {
+            @Html.Label("Convert Digits To Words")
+            @Html.TextBox("txtDigits")
+            <input type="submit" id="btnSubmit" name="Submit" />
+        }
+        @ViewBag.Name
+    </div>
