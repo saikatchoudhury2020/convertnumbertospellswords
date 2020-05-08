@@ -27,7 +27,7 @@ namespace convertnumbertospellswords.Controllers
                 }
                 if (number == "0")
                 {
-                    ViewBag.Name ="The number in currency fomat is Zero Only";
+                    ViewBag.Name = "The number in currency format is Zero Only";
                 }
                 else
                 {
