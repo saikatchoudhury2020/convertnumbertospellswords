@@ -122,7 +122,6 @@ namespace convertnumbertospellswords
                 bool beginsZero = false;//tests for 0XX    
                 bool isDone = false;//test if already translated    
                 double dblAmt = (Convert.ToDouble(Number));
-                //if ((dblAmt > 0) && number.StartsWith("0"))    
                 if (dblAmt > 0)
                 {//test for zero or digit zero in a nuemric    
                     beginsZero = Number.StartsWith("0");
@@ -164,20 +163,18 @@ namespace convertnumbertospellswords
                             pos = (numDigits % 10) + 1;
                             place = " Billion ";
                             break;
-                        //add extra case options for anything above Billion...    
+
                         default:
                             isDone = true;
                             break;
                     }
                     if (!isDone)
-                    {//if transalation is not done, continue...(Recursion comes in now!!)    
+                    {  
                         if (Number.Substring(0, pos) != "0" && Number.Substring(pos) != "0")
                         {
                             try
                             {
-                                word = ConvertWholeNumber(Number.Substring(0, pos)) + place + ConvertWholeNumber
-
-(Number.Substring(pos));
+                                word = ConvertWholeNumber(Number.Substring(0, pos)) + place + ConvertWholeNumber(Number.Substring(pos));
                             }
                             catch { }
                         }
@@ -186,10 +183,8 @@ namespace convertnumbertospellswords
                             word = ConvertWholeNumber(Number.Substring(0, pos)) + ConvertWholeNumber(Number.Substring(pos));
                         }
 
-                        //check for trailing zeros    
-                        //if (beginsZero) word = " and " + word.Trim();    
                     }
-                    //ignore digit grouping names    
+ 
                     if (word.Trim().Equals(place.Trim())) word = "";
                 }
             }
@@ -209,8 +204,8 @@ namespace convertnumbertospellswords
                     points = numb.Substring(decimalPlace + 1);
                     if (Convert.ToInt32(points) > 0)
                     {
-                        andStr = "and";// just to separate whole numbers from points/cents    
-                        endStr = "Paisa " + endStr;//Cents    
+                        andStr = "and";
+                        endStr = "Paisa " + endStr;    
                         pointStr = ConvertDecimals(points);
                     }
                 }
